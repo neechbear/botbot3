@@ -1,0 +1,1978 @@
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = undef;
+
+Use of uninitialized value in string eq at ./botbot3 line 69.
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = undef;
+
+Use of uninitialized value in string eq at ./botbot3 line 69.
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = undef;
+
+Use of uninitialized value in string eq at ./botbot3 line 73.
+
+$VAR1 = {
+          'args' => [
+                      'neech',
+                      'returns',
+                      'from',
+                      'idling.'
+                    ],
+          'msgtype' => 'IDLE',
+          'text' => 'neech returns from idling.',
+          'person' => 'neech',
+          'cmdargs' => [
+                         'returns'
+                       ],
+          'respond' => undef,
+          'raw' => 'IDLE neech returns from idling.',
+          'command' => 'neech',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'DISCONNECT',
+                      'Your',
+                      'logon',
+                      'has',
+                      'timed',
+                      'out.'
+                    ],
+          'msgtype' => 'DISCONNECT',
+          'text' => 'Your logon has timed out.',
+          'person' => undef,
+          'cmdargs' => [
+                         'logon'
+                       ],
+          'respond' => undef,
+          'raw' => 'DISCONNECT Your logon has timed out.',
+          'command' => 'Your',
+          'list' => undef
+        };
+
+Client 2 got read error 0 (Normal disconnection)
+Connected to 85.158.42.201:1236
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'DISCONNECT',
+                      'BotBot',
+                      'has',
+                      'disconnected!',
+                      '-',
+                      'Forced',
+                      'off.'
+                    ],
+          'msgtype' => 'DISCONNECT',
+          'text' => 'BotBot has disconnected! - Forced off.',
+          'person' => undef,
+          'cmdargs' => [
+                         'has'
+                       ],
+          'respond' => undef,
+          'raw' => 'DISCONNECT BotBot has disconnected! - Forced off.',
+          'command' => 'BotBot',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'MARK',
+                      '---------------------------------------------------------------------',
+                      '23:36'
+                    ],
+          'msgtype' => 'MARK',
+          'text' => '--------------------------------------------------------------------- 23:36',
+          'person' => undef,
+          'cmdargs' => [
+                         '23:36'
+                       ],
+          'respond' => undef,
+          'raw' => 'MARK --------------------------------------------------------------------- 23:36',
+          'command' => '---------------------------------------------------------------------',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'For',
+                      'an',
+                      'account,',
+                      'talk',
+                      'to',
+                      'a',
+                      'master.',
+                      'You',
+                      'can',
+                      'get',
+                      'a',
+                      'list',
+                      'of'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ For an account, talk to a master.  You can get a list of',
+          'person' => undef,
+          'cmdargs' => [
+                         'For'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ For an account, talk to a master.  You can get a list of',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'available',
+                      'commands',
+                      'by',
+                      'typing',
+                      '\'.help',
+                      'commands\'',
+                      'and',
+                      'help',
+                      'on',
+                      'a'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ available commands by typing \'.help commands\' and help on a',
+          'person' => undef,
+          'cmdargs' => [
+                         'available'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ available commands by typing \'.help commands\' and help on a',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'certain',
+                      'command',
+                      'by',
+                      'typing',
+                      '\'.help',
+                      'command\'.',
+                      'Just',
+                      'use',
+                      '\'.help\''
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ certain command by typing \'.help command\'.  Just use \'.help\'',
+          'person' => undef,
+          'cmdargs' => [
+                         'certain'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ certain command by typing \'.help command\'.  Just use \'.help\'',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'for',
+                      'general',
+                      'help.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ for general help.',
+          'person' => undef,
+          'cmdargs' => [
+                         'for'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ for general help.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'Compliments,',
+                      'complaints,',
+                      'requests?',
+                      'Use',
+                      '.request'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ Compliments, complaints, requests?  Use .request',
+          'person' => undef,
+          'cmdargs' => [
+                         'Compliments,'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ Compliments, complaints, requests?  Use .request',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'You\'ll',
+                      'probably',
+                      'want',
+                      'to',
+                      'type',
+                      '".set',
+                      'prompts',
+                      'on",',
+                      '".set',
+                      'term',
+                      'colour"'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ You\'ll probably want to type ".set prompts on", ".set term colour"',
+          'person' => undef,
+          'cmdargs' => [
+                         'You\'ll'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ You\'ll probably want to type ".set prompts on", ".set term colour"',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'and',
+                      '".set',
+                      'echo',
+                      'off"',
+                      'if',
+                      'you\'re',
+                      'using',
+                      'a',
+                      'decent',
+                      'client,',
+                      'like'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ and ".set echo off" if you\'re using a decent client, like',
+          'person' => undef,
+          'cmdargs' => [
+                         'and'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ and ".set echo off" if you\'re using a decent client, like',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'TinyFugue.',
+                      'Also',
+                      'do',
+                      '".set',
+                      'strip',
+                      'on"',
+                      'if',
+                      'you',
+                      'emote',
+                      'lots',
+                      'too.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ TinyFugue. Also do ".set strip on" if you emote lots too.',
+          'person' => undef,
+          'cmdargs' => [
+                         'TinyFugue.'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ TinyFugue. Also do ".set strip on" if you emote lots too.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'https://talker.tfb.net/',
+                      '-',
+                      'Please',
+                      'do',
+                      'not',
+                      'link',
+                      'to',
+                      'this',
+                      'URL'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ https://talker.tfb.net/ - Please do not link to this URL',
+          'person' => undef,
+          'cmdargs' => [
+                         'https://talker.tfb.net/'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ https://talker.tfb.net/ - Please do not link to this URL',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'We\'re',
+                      'currently',
+                      'looking',
+                      'for',
+                      'an',
+                      'official',
+                      'name',
+                      'for',
+                      'this',
+                      'talker,'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ We\'re currently looking for an official name for this talker,',
+          'person' => undef,
+          'cmdargs' => [
+                         'We\'re'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ We\'re currently looking for an official name for this talker,',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'and',
+                      'an',
+                      'interesting',
+                      'logo',
+                      'for',
+                      'the',
+                      'website.',
+                      'If',
+                      'you',
+                      'have',
+                      'any'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ and an interesting logo for the website. If you have any',
+          'person' => undef,
+          'cmdargs' => [
+                         'and'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ and an interesting logo for the website. If you have any',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'good',
+                      'suggestions,',
+                      'please',
+                      'be',
+                      'nice',
+                      'and',
+                      'vocal.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ good suggestions, please be nice and vocal.',
+          'person' => undef,
+          'cmdargs' => [
+                         'good'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ good suggestions, please be nice and vocal.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'End',
+                      'of',
+                      'MOTD'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ End of MOTD',
+          'person' => undef,
+          'cmdargs' => [
+                         'End'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ End of MOTD',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'DONE',
+                      'Options:',
+                      'Beep',
+                      'On,',
+                      'CR',
+                      'On,',
+                      'Echo',
+                      'Off,',
+                      'Strip',
+                      'Off,',
+                      'Prompts',
+                      'Off,',
+                      'Shouts',
+                      'On,',
+                      'Messages',
+                      'On,',
+                      'Lists',
+                      'On,',
+                      'Idling',
+                      'messages',
+                      'On,',
+                      'Terminal',
+                      'Client,',
+                      'Width',
+                      '79',
+                      'chars,',
+                      'Language',
+                      'en-gb.'
+                    ],
+          'msgtype' => 'DONE',
+          'text' => 'Options: Beep On, CR On, Echo Off, Strip Off, Prompts Off, Shouts On, Messages On, Lists On, Idling messages On, Terminal Client, Width 79 chars, Language en-gb.',
+          'person' => undef,
+          'cmdargs' => [
+                         'Beep'
+                       ],
+          'respond' => undef,
+          'raw' => 'DONE Options: Beep On, CR On, Echo Off, Strip Off, Prompts Off, Shouts On, Messages On, Lists On, Idling messages On, Terminal Client, Width 79 chars, Language en-gb.',
+          'command' => 'Options:',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'LOOKHDR',
+                      'Active',
+                      'users',
+                      'in',
+                      'group',
+                      'Bots-R-Us:'
+                    ],
+          'msgtype' => 'LOOKHDR',
+          'text' => 'Active users in group Bots-R-Us:',
+          'person' => undef,
+          'cmdargs' => [
+                         'users'
+                       ],
+          'respond' => undef,
+          'raw' => 'LOOKHDR Active users in group Bots-R-Us:',
+          'command' => 'Active',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'LOOK',
+                      'botbot(P)',
+                      'PerlBot(U)'
+                    ],
+          'msgtype' => 'LOOK',
+          'text' => 'botbot(P)     PerlBot(U)',
+          'person' => undef,
+          'cmdargs' => [
+                         'PerlBot(U)'
+                       ],
+          'respond' => undef,
+          'raw' => 'LOOK   botbot(P)     PerlBot(U)',
+          'command' => 'botbot(P)',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'COMMENT',
+                      'No',
+                      'comments',
+                      'set.'
+                    ],
+          'msgtype' => 'COMMENT',
+          'text' => 'No comments set.',
+          'person' => undef,
+          'cmdargs' => [
+                         'comments'
+                       ],
+          'respond' => undef,
+          'raw' => 'COMMENT No comments set.',
+          'command' => 'No',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'MARK',
+                      '---------------------------------------------------------------------',
+                      '23:37'
+                    ],
+          'msgtype' => 'MARK',
+          'text' => '--------------------------------------------------------------------- 23:37',
+          'person' => undef,
+          'cmdargs' => [
+                         '23:37'
+                       ],
+          'respond' => undef,
+          'raw' => 'MARK --------------------------------------------------------------------- 23:37',
+          'command' => '---------------------------------------------------------------------',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'For',
+                      'an',
+                      'account,',
+                      'talk',
+                      'to',
+                      'a',
+                      'master.',
+                      'You',
+                      'can',
+                      'get',
+                      'a',
+                      'list',
+                      'of'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ For an account, talk to a master.  You can get a list of',
+          'person' => undef,
+          'cmdargs' => [
+                         'For'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ For an account, talk to a master.  You can get a list of',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'available',
+                      'commands',
+                      'by',
+                      'typing',
+                      '\'.help',
+                      'commands\'',
+                      'and',
+                      'help',
+                      'on',
+                      'a'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ available commands by typing \'.help commands\' and help on a',
+          'person' => undef,
+          'cmdargs' => [
+                         'available'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ available commands by typing \'.help commands\' and help on a',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'certain',
+                      'command',
+                      'by',
+                      'typing',
+                      '\'.help',
+                      'command\'.',
+                      'Just',
+                      'use',
+                      '\'.help\''
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ certain command by typing \'.help command\'.  Just use \'.help\'',
+          'person' => undef,
+          'cmdargs' => [
+                         'certain'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ certain command by typing \'.help command\'.  Just use \'.help\'',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'for',
+                      'general',
+                      'help.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ for general help.',
+          'person' => undef,
+          'cmdargs' => [
+                         'for'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ for general help.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'Compliments,',
+                      'complaints,',
+                      'requests?',
+                      'Use',
+                      '.request'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ Compliments, complaints, requests?  Use .request',
+          'person' => undef,
+          'cmdargs' => [
+                         'Compliments,'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ Compliments, complaints, requests?  Use .request',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'You\'ll',
+                      'probably',
+                      'want',
+                      'to',
+                      'type',
+                      '".set',
+                      'prompts',
+                      'on",',
+                      '".set',
+                      'term',
+                      'colour"'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ You\'ll probably want to type ".set prompts on", ".set term colour"',
+          'person' => undef,
+          'cmdargs' => [
+                         'You\'ll'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ You\'ll probably want to type ".set prompts on", ".set term colour"',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'and',
+                      '".set',
+                      'echo',
+                      'off"',
+                      'if',
+                      'you\'re',
+                      'using',
+                      'a',
+                      'decent',
+                      'client,',
+                      'like'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ and ".set echo off" if you\'re using a decent client, like',
+          'person' => undef,
+          'cmdargs' => [
+                         'and'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ and ".set echo off" if you\'re using a decent client, like',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'TinyFugue.',
+                      'Also',
+                      'do',
+                      '".set',
+                      'strip',
+                      'on"',
+                      'if',
+                      'you',
+                      'emote',
+                      'lots',
+                      'too.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ TinyFugue. Also do ".set strip on" if you emote lots too.',
+          'person' => undef,
+          'cmdargs' => [
+                         'TinyFugue.'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ TinyFugue. Also do ".set strip on" if you emote lots too.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'https://talker.tfb.net/',
+                      '-',
+                      'Please',
+                      'do',
+                      'not',
+                      'link',
+                      'to',
+                      'this',
+                      'URL'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ https://talker.tfb.net/ - Please do not link to this URL',
+          'person' => undef,
+          'cmdargs' => [
+                         'https://talker.tfb.net/'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ https://talker.tfb.net/ - Please do not link to this URL',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'We\'re',
+                      'currently',
+                      'looking',
+                      'for',
+                      'an',
+                      'official',
+                      'name',
+                      'for',
+                      'this',
+                      'talker,'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ We\'re currently looking for an official name for this talker,',
+          'person' => undef,
+          'cmdargs' => [
+                         'We\'re'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ We\'re currently looking for an official name for this talker,',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'and',
+                      'an',
+                      'interesting',
+                      'logo',
+                      'for',
+                      'the',
+                      'website.',
+                      'If',
+                      'you',
+                      'have',
+                      'any'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ and an interesting logo for the website. If you have any',
+          'person' => undef,
+          'cmdargs' => [
+                         'and'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ and an interesting logo for the website. If you have any',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'good',
+                      'suggestions,',
+                      'please',
+                      'be',
+                      'nice',
+                      'and',
+                      'vocal.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ good suggestions, please be nice and vocal.',
+          'person' => undef,
+          'cmdargs' => [
+                         'good'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ good suggestions, please be nice and vocal.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'End',
+                      'of',
+                      'MOTD'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ End of MOTD',
+          'person' => undef,
+          'cmdargs' => [
+                         'End'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ End of MOTD',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'DONE',
+                      'Options:',
+                      'Beep',
+                      'On,',
+                      'CR',
+                      'On,',
+                      'Echo',
+                      'Off,',
+                      'Strip',
+                      'Off,',
+                      'Prompts',
+                      'Off,',
+                      'Shouts',
+                      'On,',
+                      'Messages',
+                      'On,',
+                      'Lists',
+                      'On,',
+                      'Idling',
+                      'messages',
+                      'On,',
+                      'Terminal',
+                      'Client,',
+                      'Width',
+                      '79',
+                      'chars,',
+                      'Language',
+                      'en-gb.'
+                    ],
+          'msgtype' => 'DONE',
+          'text' => 'Options: Beep On, CR On, Echo Off, Strip Off, Prompts Off, Shouts On, Messages On, Lists On, Idling messages On, Terminal Client, Width 79 chars, Language en-gb.',
+          'person' => undef,
+          'cmdargs' => [
+                         'Beep'
+                       ],
+          'respond' => undef,
+          'raw' => 'DONE Options: Beep On, CR On, Echo Off, Strip Off, Prompts Off, Shouts On, Messages On, Lists On, Idling messages On, Terminal Client, Width 79 chars, Language en-gb.',
+          'command' => 'Options:',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'LOOKHDR',
+                      'Active',
+                      'users',
+                      'in',
+                      'group',
+                      'Bots-R-Us:'
+                    ],
+          'msgtype' => 'LOOKHDR',
+          'text' => 'Active users in group Bots-R-Us:',
+          'person' => undef,
+          'cmdargs' => [
+                         'users'
+                       ],
+          'respond' => undef,
+          'raw' => 'LOOKHDR Active users in group Bots-R-Us:',
+          'command' => 'Active',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'LOOK',
+                      'botbot(P)',
+                      'PerlBot(U)'
+                    ],
+          'msgtype' => 'LOOK',
+          'text' => 'botbot(P)     PerlBot(U)',
+          'person' => undef,
+          'cmdargs' => [
+                         'PerlBot(U)'
+                       ],
+          'respond' => undef,
+          'raw' => 'LOOK   botbot(P)     PerlBot(U)',
+          'command' => 'botbot(P)',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'COMMENT',
+                      'No',
+                      'comments',
+                      'set.'
+                    ],
+          'msgtype' => 'COMMENT',
+          'text' => 'No comments set.',
+          'person' => undef,
+          'cmdargs' => [
+                         'comments'
+                       ],
+          'respond' => undef,
+          'raw' => 'COMMENT No comments set.',
+          'command' => 'No',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'MARK',
+                      '---------------------------------------------------------------------',
+                      '23:39'
+                    ],
+          'msgtype' => 'MARK',
+          'text' => '--------------------------------------------------------------------- 23:39',
+          'person' => undef,
+          'cmdargs' => [
+                         '23:39'
+                       ],
+          'respond' => undef,
+          'raw' => 'MARK --------------------------------------------------------------------- 23:39',
+          'command' => '---------------------------------------------------------------------',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'For',
+                      'an',
+                      'account,',
+                      'talk',
+                      'to',
+                      'a',
+                      'master.',
+                      'You',
+                      'can',
+                      'get',
+                      'a',
+                      'list',
+                      'of'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ For an account, talk to a master.  You can get a list of',
+          'person' => undef,
+          'cmdargs' => [
+                         'For'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ For an account, talk to a master.  You can get a list of',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'available',
+                      'commands',
+                      'by',
+                      'typing',
+                      '\'.help',
+                      'commands\'',
+                      'and',
+                      'help',
+                      'on',
+                      'a'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ available commands by typing \'.help commands\' and help on a',
+          'person' => undef,
+          'cmdargs' => [
+                         'available'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ available commands by typing \'.help commands\' and help on a',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'certain',
+                      'command',
+                      'by',
+                      'typing',
+                      '\'.help',
+                      'command\'.',
+                      'Just',
+                      'use',
+                      '\'.help\''
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ certain command by typing \'.help command\'.  Just use \'.help\'',
+          'person' => undef,
+          'cmdargs' => [
+                         'certain'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ certain command by typing \'.help command\'.  Just use \'.help\'',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'for',
+                      'general',
+                      'help.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ for general help.',
+          'person' => undef,
+          'cmdargs' => [
+                         'for'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ for general help.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'Compliments,',
+                      'complaints,',
+                      'requests?',
+                      'Use',
+                      '.request'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ Compliments, complaints, requests?  Use .request',
+          'person' => undef,
+          'cmdargs' => [
+                         'Compliments,'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ Compliments, complaints, requests?  Use .request',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'You\'ll',
+                      'probably',
+                      'want',
+                      'to',
+                      'type',
+                      '".set',
+                      'prompts',
+                      'on",',
+                      '".set',
+                      'term',
+                      'colour"'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ You\'ll probably want to type ".set prompts on", ".set term colour"',
+          'person' => undef,
+          'cmdargs' => [
+                         'You\'ll'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ You\'ll probably want to type ".set prompts on", ".set term colour"',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'and',
+                      '".set',
+                      'echo',
+                      'off"',
+                      'if',
+                      'you\'re',
+                      'using',
+                      'a',
+                      'decent',
+                      'client,',
+                      'like'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ and ".set echo off" if you\'re using a decent client, like',
+          'person' => undef,
+          'cmdargs' => [
+                         'and'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ and ".set echo off" if you\'re using a decent client, like',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'TinyFugue.',
+                      'Also',
+                      'do',
+                      '".set',
+                      'strip',
+                      'on"',
+                      'if',
+                      'you',
+                      'emote',
+                      'lots',
+                      'too.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ TinyFugue. Also do ".set strip on" if you emote lots too.',
+          'person' => undef,
+          'cmdargs' => [
+                         'TinyFugue.'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ TinyFugue. Also do ".set strip on" if you emote lots too.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'https://talker.tfb.net/',
+                      '-',
+                      'Please',
+                      'do',
+                      'not',
+                      'link',
+                      'to',
+                      'this',
+                      'URL'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ https://talker.tfb.net/ - Please do not link to this URL',
+          'person' => undef,
+          'cmdargs' => [
+                         'https://talker.tfb.net/'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ https://talker.tfb.net/ - Please do not link to this URL',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'We\'re',
+                      'currently',
+                      'looking',
+                      'for',
+                      'an',
+                      'official',
+                      'name',
+                      'for',
+                      'this',
+                      'talker,'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ We\'re currently looking for an official name for this talker,',
+          'person' => undef,
+          'cmdargs' => [
+                         'We\'re'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ We\'re currently looking for an official name for this talker,',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'and',
+                      'an',
+                      'interesting',
+                      'logo',
+                      'for',
+                      'the',
+                      'website.',
+                      'If',
+                      'you',
+                      'have',
+                      'any'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ and an interesting logo for the website. If you have any',
+          'person' => undef,
+          'cmdargs' => [
+                         'and'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ and an interesting logo for the website. If you have any',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'good',
+                      'suggestions,',
+                      'please',
+                      'be',
+                      'nice',
+                      'and',
+                      'vocal.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ good suggestions, please be nice and vocal.',
+          'person' => undef,
+          'cmdargs' => [
+                         'good'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ good suggestions, please be nice and vocal.',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++',
+          'person' => undef,
+          'cmdargs' => [],
+          'respond' => undef,
+          'raw' => 'RAW +++',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'End',
+                      'of',
+                      'MOTD'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ End of MOTD',
+          'person' => undef,
+          'cmdargs' => [
+                         'End'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ End of MOTD',
+          'command' => '+++',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'DONE',
+                      'Options:',
+                      'Beep',
+                      'On,',
+                      'CR',
+                      'On,',
+                      'Echo',
+                      'Off,',
+                      'Strip',
+                      'Off,',
+                      'Prompts',
+                      'Off,',
+                      'Shouts',
+                      'On,',
+                      'Messages',
+                      'On,',
+                      'Lists',
+                      'On,',
+                      'Idling',
+                      'messages',
+                      'On,',
+                      'Terminal',
+                      'Client,',
+                      'Width',
+                      '79',
+                      'chars,',
+                      'Language',
+                      'en-gb.'
+                    ],
+          'msgtype' => 'DONE',
+          'text' => 'Options: Beep On, CR On, Echo Off, Strip Off, Prompts Off, Shouts On, Messages On, Lists On, Idling messages On, Terminal Client, Width 79 chars, Language en-gb.',
+          'person' => undef,
+          'cmdargs' => [
+                         'Beep'
+                       ],
+          'respond' => undef,
+          'raw' => 'DONE Options: Beep On, CR On, Echo Off, Strip Off, Prompts Off, Shouts On, Messages On, Lists On, Idling messages On, Terminal Client, Width 79 chars, Language en-gb.',
+          'command' => 'Options:',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'LOOKHDR',
+                      'Active',
+                      'users',
+                      'in',
+                      'group',
+                      'Bots-R-Us:'
+                    ],
+          'msgtype' => 'LOOKHDR',
+          'text' => 'Active users in group Bots-R-Us:',
+          'person' => undef,
+          'cmdargs' => [
+                         'users'
+                       ],
+          'respond' => undef,
+          'raw' => 'LOOKHDR Active users in group Bots-R-Us:',
+          'command' => 'Active',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'LOOK',
+                      'botbot(P)',
+                      'PerlBot(U)'
+                    ],
+          'msgtype' => 'LOOK',
+          'text' => 'botbot(P)     PerlBot(U)',
+          'person' => undef,
+          'cmdargs' => [
+                         'PerlBot(U)'
+                       ],
+          'respond' => undef,
+          'raw' => 'LOOK   botbot(P)     PerlBot(U)',
+          'command' => 'botbot(P)',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'COMMENT',
+                      'No',
+                      'comments',
+                      'set.'
+                    ],
+          'msgtype' => 'COMMENT',
+          'text' => 'No comments set.',
+          'person' => undef,
+          'cmdargs' => [
+                         'comments'
+                       ],
+          'respond' => undef,
+          'raw' => 'COMMENT No comments set.',
+          'command' => 'No',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+Use of uninitialized value in list assignment at ./botbot3 line 108.
+Use of uninitialized value in list assignment at ./botbot3 line 108.
+Odd number of elements in hash assignment at ./botbot3 line 108.
+Use of uninitialized value in list assignment at ./botbot3 line 108.
+
+$VAR1 = {
+          '' => undef,
+          'text' => '',
+          'ARRAY(0x888dad4)' => 'list',
+          'args' => [
+                      '+++',
+                      'Name',
+                      'is',
+                      'already',
+                      'in',
+                      'use.',
+                      'Use',
+                      '*',
+                      'before',
+                      'your',
+                      'name',
+                      'to',
+                      'force',
+                      'on.'
+                    ],
+          'command' => 'cmdargs',
+          'msgtype' => '27',
+          'raw' => '+++ Name is already in use. Use * before your name to force on.'
+        };
+
+Scalar found where operator expected at ./botbot3 line 144, near "?:\s+(.+))?$/"
+	(Missing operator before $/?)
+syntax error at ./botbot3 line 143, near "/^"
+Unmatched right curly bracket at ./botbot3 line 224, at end of line
+syntax error at ./botbot3 line 224, near "}"
+Execution of ./botbot3 aborted due to compilation errors.
+Unmatched right curly bracket at ./botbot3 line 224, at end of line
+syntax error at ./botbot3 line 224, near "}"
+Execution of ./botbot3 aborted due to compilation errors.
+
+$VAR1 = {
+          'args' => [
+                      'HELLO',
+                      'colloquy',
+                      '1.41.94.arwen-1',
+                      '(09',
+                      'May',
+                      '2006)'
+                    ],
+          'msgtype' => 'HELLO',
+          'text' => 'colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'person' => undef,
+          'cmdargs' => [
+                         '1.41.94.arwen-1'
+                       ],
+          'respond' => undef,
+          'raw' => 'HELLO colloquy 1.41.94.arwen-1 (09 May 2006)',
+          'command' => 'colloquy',
+          'list' => undef
+        };
+
+
+$VAR1 = {
+          'args' => [
+                      'RAW',
+                      '+++',
+                      'Name',
+                      'is',
+                      'already',
+                      'in',
+                      'use.',
+                      'Use',
+                      '*',
+                      'before',
+                      'your',
+                      'name',
+                      'to',
+                      'force',
+                      'on.'
+                    ],
+          'msgtype' => 'RAW',
+          'text' => '+++ Name is already in use. Use * before your name to force on.',
+          'person' => undef,
+          'cmdargs' => [
+                         'Name'
+                       ],
+          'respond' => undef,
+          'raw' => 'RAW +++ Name is already in use. Use * before your name to force on.',
+          'command' => '+++',
+          'list' => undef
+        };
+

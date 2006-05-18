@@ -1,0 +1,274 @@
+#!/home/nicolaw/webroot/perl-5.8.7/bin/perl
+
+use 5.8.4;
+use strict;
+use warnings;
+use subs qw(debug);
+
+use constant DEBUG => $ENV{DEBUG} ? 1 : 0;
+
+use POE;
+use POE::Component::Client::TCP;
+use POE::Filter::Line;
+use File::Basename qw(fileparse);
+use Config::General qw();
+use Data::Dumper;
+
+use FindBin qw($Bin);
+use lib (".","$Bin","$Bin/plugin");
+use plugin;
+
+use Module::Pluggable(
+		search_dirs => [ "$Bin/plugin" ],
+		search_path => [ "plugin" ],
+		instantiate => 'new',
+	);
+
+use vars qw($VERSION $SELF);
+
+($SELF = $0) =~ s|^.*/||;
+$VERSION = sprintf('%d.%02d', q$Revision: 1.27 $ =~ /(\d+)/g);
+
+sleep(4) if @ARGV && grep(/^(-p|--pause)$/i,@ARGV);
+daemonize("/tmp/$SELF.pid",1) if @ARGV && grep(/^(-d|--daemon)$/i,@ARGV);
+chdir($Bin) || die "Unable to change directory to $Bin: $!";
+
+my ($basename, $dirname, $extension) = fileparse($0, '\.[^\.]+');
+my $cfg_file = "$dirname$basename.cfg";
+my $conf = new Config::General(
+		-ConfigFile            => $cfg_file,
+		-UseApacheInclude      => 1,
+		-IncludeRelative       => 1,
+		-LowerCaseNames        => 1,
+		-MergeDuplicateBlocks  => 1,
+		-AllowMultiOptions     => 1,
+		-MergeDuplicateOptions => 1,
+		-AutoTrue              => 1,
+	);
+my %config = $conf->getall;
+
+POE::Component::Client::TCP->new(
+		RemoteAddress => $config{host},
+		RemotePort    => $config{port},
+		Filter => [ "POE::Filter::Line", Literal => "\x0D\x0A" ],
+
+		Connected => sub {
+			print "Connected to $config{host}:$config{port}\n";
+			$_[HEAP]->{banner_buffer} = [];
+			$_[KERNEL]->delay(send_enter => 5);
+		},
+
+		ConnectError => sub {
+			print "Could not connect to $config{host}:$config{port}\n";
+		},
+
+		ServerInput => sub {
+			my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];
+			my $args = parse_input($input);
+			DEBUG && warn("\n".Dumper($args)."\n");
+			$heap->{server}->put("botbot riugfreouvir\n") if $args->{msgtype} eq 'HELLO';
+			$kernel->delay(send_enter => undef);
+		},
+
+		InlineStates =>  {
+			send_enter => sub {
+				debug "Sending enter to $config{host}:$config{port}\n";
+				$_[HEAP]->{server}->put("\n");
+				$_[KERNEL]->delay(input_timeout => 5);
+			},
+
+			input_timeout => sub {
+				my ($kernel, $heap) = @_[KERNEL, HEAP];
+				$kernel->yield("shutdown");
+			},
+		}
+	);
+
+$poe_kernel->run();
+
+exit 0;
+
+sub debug {
+	return unless DEBUG;
+	warn $_ for @_;
+}
+
+sub parse_input {
+	local $_ = $_[0];
+	s/[\n\r]//g;
+	s/^\s+|\s+$//g;
+
+	$_ = "RAW $_" if m/^\+\+\+/;
+	return unless m/^([A-Z]+\S*)(?:\s+(.+))?$/;
+	my %args = (
+			raw     => $_,
+			msgtype => $1 || '',
+			text    => $2 || '',
+			args    => [ split(/\s+/,$_||'') ],
+			command => (split(/\s+/,$2||''))[0],
+			cmdargs => [ (split(/\s+/,$2||''))[1,] ],
+			list    => undef,
+			person  => undef,
+			respond => undef,
+		);
+	local $_ = $args{text};
+
+	if ($args{msgtype} =~ /^TALK|TELL$/ && /^(\S+)\s+[:>](.*)\s*$/) {
+		$args{person}  = $1;
+		$args{text}    = $2;
+		$args{cmdargs} = $args{args} = [ split(/\s+/,$args{text}) ];
+		$args{command} = shift @{$args{cmdargs}};
+
+	} elsif ($args{msgtype} eq 'LISTINVITE' && /((\S+)\s+invites\s+you\s+to\s+(\S+)\s+To\s+respond,\s+type\s+(.+))\s*$/) {
+		$args{text}    = $1;
+		$args{person}  = $2;
+		$args{list}    = $3;
+		$args{respond} = $4;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+
+	} elsif ($args{msgtype} eq 'LISTTALK' && /^(\S+)\s*%(.*)\s+{(.+?)}\s*$/) {
+		$args{person}  = $1;
+		$args{text}    = $2;
+		$args{cmdargs} = $args{args} = [ split(/\s+/,$args{text}) ];
+		$args{command} = shift @{$args{cmdargs}};
+		$args{list}    = '%'.$3;
+
+	} elsif ($args{msgtype} eq 'LISTEMOTE' && /^%\s*(\S+)\s+(.*)\s+{(.+?)}\s*$/) {
+		$args{person}  = $1;
+		$args{text}    = $2;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+		$args{list}    = '%'.$3;
+
+	} elsif ($args{msgtype} eq 'OBSERVED' && /^(\S+)\s+(\S+)\s+(\S+)\s+\@(.+)\s+{(\@.+?)}\s*$/) {
+		$args{group}   = $args{list} = '@'.$1;
+		$args{msgtype} = "OBSERVED $2";
+		$args{person}  = $3;
+		$args{text}    = $4;
+		$args{cmdargs} = $args{args} = [ split(/\s+/,$args{text}) ];
+		$args{command} = shift @{$args{cmdargs}};
+
+	} elsif ($args{msgtype} eq 'OBSERVED' && /^(\S+)\s+(\S+)\s+(?:\@\s+)(\S+)\s+(.+)\s+{(\@.+?)}\s*$/) {
+		$args{group}   = $args{list} = '@'.$1;
+		$args{msgtype} = "OBSERVED $2";
+		$args{person}  = $3;
+		$args{text}    = $4;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+
+	} elsif ($args{msgtype} eq 'OBSERVED' && /^(\S+)\s+GROUPCHANGE\s+(\S+)\s+(.*)\s*$/) {
+		$args{group}   = $args{list} = '@'.$1;
+		$args{msgtype} = 'OBSERVED GROUPCHANGE';
+		$args{person}  = $2;
+		$args{text}    = $3;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+
+	} elsif ($args{msgtype} eq 'SHOUT' && /^(\S+)\s+\!(.*)\s*$/) {
+		$args{person}  = $1;
+		$args{text}    = $2;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+
+	} elsif ($args{msgtype} eq 'CONNECT' && /^((\S+).+\s+(\S+)\.)\s*$/) {
+		$args{text}    = $1;
+		$args{person}  = $2;
+		$args{group}   = $args{list} = '@'.$3;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+
+	} elsif ($args{msgtype} eq 'IDLE' && /^((\S+)(.*))\s*$/) {
+		$args{text}    = $1;
+		$args{person}  = $2;
+		$args{args}    = [ split(/\s+/,$args{text}) ];
+	}
+
+	return \%args;
+}
+
+# Daemonize self
+sub daemonize {
+	# Pass in the PID filename to use
+	my $pidfile = shift || undef;
+
+	# Boolean true will supress "already running" messages if you want to
+	# spawn a process out of cron every so often to ensure it's always
+	# running, and to respawn it if it's died
+	my $cron = shift || 0;
+
+	# Set the fname to the filename minus path
+	(my $SELF = $0) =~ s|.*/||;
+	$0 = $SELF;
+
+	# Lazy people have to have everything done for them!
+	$pidfile = "/tmp/$SELF.pid" unless defined $pidfile;
+
+	# Check that we're not already running, and quit if we are
+	if (-f $pidfile) {
+		unless (open(PID,$pidfile)) {
+			warn "Unable to open file handle PID for file '$pidfile': $!\n";
+			exit 1;
+		}
+		my $pid = <PID>; chomp $pid;
+		close(PID) || warn "Unable to close file handle PID for file '$pidfile': $!\n";
+
+		# This is a good method to check the process is still running for Linux
+		# kernels since it checks that the fname of the process is the same as
+		# the current process
+		if (-f "/proc/$pid/stat") {
+			open(FH,"/proc/$pid/stat") || warn "Unable to open file handle FH for file '/proc/$pid/stat': $!\n";
+			my $line = <FH>;
+			close(FH) || warn "Unable to close file handle FH for file '/proc/$pid/stat': $!\n";
+			if ($line =~ /\d+[^(]*\((.*)\)\s*/) {
+				my $process = $1;
+				if ($process =~ /^$SELF$/) {
+					warn "$SELF already running at PID $pid; exiting.\n" unless $cron;
+					exit 0;
+				}
+			}
+
+		# This will work on other UNIX flavors but doesn't gaurentee that the
+		# PID you've just checked is the same process fname as reported in you
+		# PID file
+		} elsif (kill(0,$pid)) {
+			warn "$SELF already running at PID $pid; exiting.\n" unless $cron;
+			exit 0;
+
+		# Otherwise the PID file is old and stale and it should be removed
+		} else {
+			warn "Removing stale PID file.\n";
+			unlink($pidfile) || warn "Unable to unlink PID file '$pidfile': $!\n";
+		}
+	}
+
+	# Daemon parent about to spawn
+	if (my $pid = fork) {
+		warn "Forking background daemon, process $pid.\n";
+		exit 0;
+
+	# Child daemon process that was spawned
+	} else {
+		# Fork a second time to get rid of any attached terminals
+		if (my $pid = fork) {
+			warn "Forking second background daemon, process $pid.\n";
+			exit 0;
+		} else {
+			unless (defined $pid) {
+				warn "Cannot fork: $!\n";
+				exit 2;
+			}
+			unless (open(FH,">$pidfile")) {
+				warn "Unable to open file handle FH for file '$pidfile': $!\n";
+				exit 3;
+			}
+			print FH $$;
+			close(FH) || warn "Unable to close file handle FH for file '$pidfile': $!\n";
+
+			# Sort out file handles and current working directory
+			chdir '/' || warn "Unable to change directory to '/': $!\n";
+			close(STDOUT) || warn "Unable to close file handle STDOUT: $!\n";
+			close(STDERR) || warn "Unable to close file handle STDERR: $!\n";
+			open(STDOUT,'>>/dev/null'); open(STDERR,'>>/dev/null');
+
+			return $$;
+		}
+	}
+}
+
+1;
+
