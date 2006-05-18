@@ -66,7 +66,7 @@ POE::Component::Client::TCP->new(
 			my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];
 			my $args = parse_input($input);
 			DEBUG && warn("\n".Dumper($args)."\n");
-			$heap->{server}->put("botbot riugfreouvir\n") if $args->{msgtype} eq 'HELLO';
+			$heap->{server}->put("$config{username} $config{password}\n") if $args->{msgtype} eq 'HELLO';
 			$kernel->delay(send_enter => undef);
 		},
 
