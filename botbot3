@@ -67,6 +67,7 @@ POE::Component::Client::TCP->new(
 			my $args = parse_input($input);
 			DEBUG && warn("\n".Dumper($args)."\n");
 			$heap->{server}->put("$config{username} $config{password}\n") if $args->{msgtype} eq 'HELLO';
+			$heap->{server}->put(".observe public\n") if $args->{msgtype} eq 'COMMENT';
 			$kernel->delay(send_enter => undef);
 		},
 
@@ -105,8 +106,10 @@ sub parse_input {
 			msgtype => $1 || '',
 			text    => $2 || '',
 			args    => [ split(/\s+/,$_||'') ],
-			command => (split(/\s+/,$2||''))[0],
-			cmdargs => [ (split(/\s+/,$2||''))[1,] ],
+			command => undef,
+			cmdargs => undef,
+			#command => (split(/\s+/,$2||''))[0],
+			#cmdargs => [ (split(/\s+/,$2||''))[1,] ],
 			list    => undef,
 			person  => undef,
 			respond => undef,
