@@ -3,23 +3,26 @@
 use 5.8.4;
 use strict;
 use warnings;
-use subs qw(debug);
 
 use FindBin qw($Bin);
 use lib ('./','./lib/',"$Bin","$Bin/plugin");
-
-use constant DEBUG => $ENV{DEBUG} ? 1 : 0;
 
 use POE;
 use POE::Component::Client::TCP;
 use POE::Filter::Line;
 use File::Basename qw(fileparse);
 use Config::General qw();
-use Data::Dumper;
-use Parse::Colloquy::Bot qw(:all);
 use Time::HiRes;
+use Parse::Colloquy::Bot qw(:all);
 use Daemon;
 use plugin;
+
+BEGIN {
+	if ($ENV{DEBUG}) {
+		require Log::Trace;
+		import Log::Trace 'warn' => { Deep => 1 };
+	}
+}
 
 use Module::Pluggable(
 		search_dirs => [ "$Bin/plugin" ],
@@ -36,42 +39,51 @@ init_server() if @ARGV && grep(/^(-d|--daemon)$/i,@ARGV);
 chdir($Bin) || die "Unable to change directory to $Bin: $!";
 
 my ($basename, $dirname, $extension) = fileparse($0, '\.[^\.]+');
-my %config = read_config("$dirname$basename.cfg");
+my $config = read_config("$dirname$basename.cfg");
 
 POE::Component::Client::TCP->new(
-		RemoteAddress => $config{host},
-		RemotePort    => $config{port},
+		RemoteAddress => $config->{host},
+		RemotePort    => $config->{port},
 		Filter => [ "POE::Filter::Line", Literal => "\x0D\x0A" ],
 
 		Connected => sub {
-			print "Connected to $config{host}:$config{port}\n";
-			$_[HEAP]->{banner_buffer} = [];
+			TRACE("Connected");
+			print "Connected to $config->{host}:$config->{port}\n";
+			$_[HEAP]->{logged_in} = 0;
 			$_[KERNEL]->delay(send_enter => 5);
 		},
 
 		ConnectError => sub {
-			print "Could not connect to $config{host}:$config{port}\n";
+			TRACE("ConnectError");
+			print "Could not connect to $config->{host}:$config->{port}\n";
 		},
 
 		ServerInput => sub {
+			TRACE("ServerInput");
 			my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];
+
 			my $time = Time::HiRes::time();
 			my $args = parse_line($input);
 			$args->{time} = $time;
-			DEBUG && warn("\n".Dumper($args)."\n");
-			$heap->{server}->put("$config{username} $config{password}\n") if $args->{msgtype} eq 'HELLO';
+
+			# here init tims
+
+			$heap->{server}->put("$config->{username} $config->{password}\n") if $args->{msgtype} eq 'HELLO';
 			$heap->{server}->put(".observe public\n") if $args->{msgtype} eq 'COMMENT';
-			$kernel->delay(send_enter => undef);
+
+			$kernel->delay(send_enter => undef) if $args->{msgtype} eq 'HELLO';
+			$kernel->delay(login_timeout => undef) if grep(/^DONE|COMMENT$/,($args->{msgtype}));
 		},
 
 		InlineStates =>  {
 			send_enter => sub {
-				debug "Sending enter to $config{host}:$config{port}\n";
+				TRACE("InlineStates => send_enter");
 				$_[HEAP]->{server}->put("\n");
-				$_[KERNEL]->delay(input_timeout => 5);
+				$_[KERNEL]->delay(login_timeout => 5);
 			},
 
-			input_timeout => sub {
+			login_timeout => sub {
+				TRACE("InlineStates => login_timeout");
 				my ($kernel, $heap) = @_[KERNEL, HEAP];
 				$kernel->yield("shutdown");
 			},
@@ -89,12 +101,7 @@ sub read_config {
 				LowerCaseNames MergeDuplicateBlocks AllowMultiOptions
 				MergeDuplicateOptions AutoTrue)
 		);
-	return $conf->getall;
-}
-
-sub debug {
-	return unless DEBUG;
-	warn $_ for @_;
+	return {$conf->getall};
 }
 
 1;
