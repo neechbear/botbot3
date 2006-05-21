@@ -151,7 +151,7 @@ sub load_plugins {
 		import Log::Trace 'warn' => { Deep => 1 };
 	};
 
-	TRACE("Loaded plugin ".ref($_)."\n") for sort(@{$heap->{plugins}});
+	TRACE("Loaded plugin ".ref($_)) for sort(@{$heap->{plugins}});
 	# Return a list of loaded plugins that we just pushed in to the heap
 	return @{$heap->{plugins}};
 }

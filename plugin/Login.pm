@@ -10,8 +10,8 @@ sub handle {
 	$self->say(sprintf('%s%s %s',
 			($self->{heap}->{config}->{force_login} ? '*' : ''),
 			$self->{heap}->{config}->{username},
-			$self->{heap}->{config}->{password},
-		) if $event->{msgtype} eq 'HELLO' && !$self->{heap}->{logged_in};
+			$self->{heap}->{config}->{password}
+		)) if $event->{msgtype} eq 'HELLO' && !$self->{heap}->{logged_in};
 }
 
 1;

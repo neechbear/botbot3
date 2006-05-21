@@ -35,7 +35,16 @@ sub whisper {
 
 	return unless $recipient =~ /\S+/ && $message =~ /\S+/;
 	my $send_str = sprintf(">%s %s", $recipient, $message);
-	TRACE('   >>Sending>>   $send_str');
+	TRACE("   >>Sending>>   $send_str");
+	$self->{heap}->{server}->put($send_str);
+}
+
+sub say {
+	my $self = shift;
+	my $send_str = join(' ',@_);
+
+	return unless $send_str =~ /\S+/;
+	TRACE("   >>Sending>>   $send_str");
 	$self->{heap}->{server}->put($send_str);
 }
 
