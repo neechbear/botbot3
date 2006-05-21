@@ -41,9 +41,10 @@ init_server() if @ARGV && grep(/^(-d|--daemon)$/i,@ARGV);
 chdir($Bin) || die "Unable to change directory to $Bin: $!";
 
 my ($basename, $dirname, $extension) = fileparse($0, '\.[^\.]+');
-my $config = read_config("$dirname$basename.cfg");
+for ("$basename.cfg") {
+	my $config = read_config($_);
 
-POE::Component::Client::TCP->new(
+	POE::Component::Client::TCP->new(
 		RemoteAddress => $config->{host},
 		RemotePort    => $config->{port},
 		Filter => [ "POE::Filter::Line", Literal => "\x0D\x0A" ],
@@ -60,10 +61,12 @@ POE::Component::Client::TCP->new(
 		ServerInput => sub {
 			TRACE("ServerInput");
 			my ($kernel, $heap, $session, $input) = @_[KERNEL, HEAP, SESSION, ARG0];
+			TRACE("   <<Input" . $session->ID . "<<   $input");
 
 			# Parse the raw event in to something more understandable
 			my $time = Time::HiRes::time();
 			my $args = parse_line($input);
+			return unless ref($args) eq 'HASH';
 			$args->{time} = $time;
 
 			# Ask each plugin in turn if they want to handle this event
@@ -102,6 +105,7 @@ POE::Component::Client::TCP->new(
 			},
 		}
 	);
+}
 
 $poe_kernel->run();
 
@@ -127,15 +131,15 @@ sub load_plugins {
 								},
 							root => $dirname,
 							heap => $heap,
-							logfile => "$dirname/logs/$config->{username}.log",
+							logfile => "$dirname/logs/$heap->{config}->{username}.log",
 						) ) {
 
 			# Don't push this object in to the heap if it's marked as disabled
 			# in the configuration file (it'll be loaded in to memory but not
 			# listed in the heap, and so will not be asked to handle events)
 			my ($friendly) = ref($plugin) =~ m/^plugin(?:\/|\:\:)(\S+)(?:\.pm)?$/;
-			if (exists($config->{plugins}->{lc($friendly)}) &&
-					$config->{plugins}->{lc($friendly)} =~ /^disabled?$/i) {
+			if (exists($heap->{config}->{plugins}->{lc($friendly)}) &&
+					$heap->{config}->{plugins}->{lc($friendly)} =~ /^disabled?$/i) {
 				next;
 			}
 
