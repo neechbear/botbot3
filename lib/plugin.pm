@@ -1,6 +1,7 @@
 package plugin;
 use strict;
 use FileHandle;
+use POSIX qw(strftime);
 
 sub new {
 	my $class = shift;
@@ -9,7 +10,18 @@ sub new {
 
 sub handle {
 	my ($self,$event) = @_;
-	$self->log(sprintf('%s was called but has handle() method', ref($self)));
+	$self->log(sprintf('%s was called but has no handle() method', ref($self)));
+}
+
+sub process {}
+sub respond {}
+
+sub queue {
+	my ($self,$method,@args) = @_;
+}
+
+sub call {
+	my ($self,$method,@args) = @_;
 }
 
 sub log {
@@ -17,11 +29,7 @@ sub log {
 	my $fh = FileHandle->new(">>$self->{logfile}");
 	if (defined $fh) {
 		my $str = "@_"; chomp $str;
-		my ($sec,$min,$hour,$mday,$mon,$year) = localtime;
-		printf $fh "[%04d-%02d-%02d %02d:%02d:%02d] %s\n",
-				$year+1900, $mon+1, $mday,
-				$hour, $min, $sec,
-				$str;
+		printf($fh,"[%s] %s\n",strftime('%Y-%m-%d %H-%M-%S',localtime), $str);
 		$fh->close;
 	} else {
 		warn "Unable to open logfile $self->{logfile} for writing: $!";
