@@ -71,15 +71,11 @@ POE::Component::Client::TCP->new(
 				$plugin->handle($args);
 			}
 
-# This is now in a plugin (or is about to be init)
-#			$heap->{server}->put("$config->{username} $config->{password}\n") if $args->{msgtype} eq 'HELLO';
-#			$heap->{server}->put(".observe public\n") if $args->{msgtype} eq 'COMMENT';
-
 			# These are little hacks because I didn't want to give plugins
 			# direct access to the POE kernel, so delayed login and connection
 			# response events are canned here instead for the time being
 			$kernel->delay(send_enter => undef) if $args->{msgtype} eq 'HELLO';
-			$kernel->delay(login_timeout => undef) if grep(/^DONE|COMMENT$/,($args->{msgtype}));
+			$kernel->delay(login_timeout => undef) if $heap->{logged_in};
 		},
 
 		InlineStates =>  {
