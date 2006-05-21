@@ -17,6 +17,7 @@ use File::Basename qw(fileparse);
 use Config::General qw();
 use Data::Dumper;
 use Parse::Colloquy::Bot qw(:all);
+use Time::HiRes;
 use Daemon;
 use plugin;
 
@@ -28,7 +29,7 @@ use Module::Pluggable(
 
 use vars qw($VERSION $SELF);
 ($SELF = $0) =~ s|^.*/||;
-$VERSION = sprintf('%d.%02d', q$Revision$ =~ /(\d+)/g);
+$VERSION = '3.01' || sprintf('%d', q$Revision$ =~ /(\d+)/g);
 
 sleep(4) if @ARGV && grep(/^(-p|--pause)$/i,@ARGV);
 init_server() if @ARGV && grep(/^(-d|--daemon)$/i,@ARGV);
@@ -54,7 +55,9 @@ POE::Component::Client::TCP->new(
 
 		ServerInput => sub {
 			my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];
+			my $time = Time::HiRes::time();
 			my $args = parse_line($input);
+			$args->{time} = $time;
 			DEBUG && warn("\n".Dumper($args)."\n");
 			$heap->{server}->put("$config{username} $config{password}\n") if $args->{msgtype} eq 'HELLO';
 			$heap->{server}->put(".observe public\n") if $args->{msgtype} eq 'COMMENT';

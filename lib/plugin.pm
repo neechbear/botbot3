@@ -1,7 +1,11 @@
 package plugin;
+
 use strict;
+
 use FileHandle;
 use POSIX qw(strftime);
+use UNIVERSAL;
+use Carp qw(carp croak);
 
 sub new {
 	my $class = shift;
@@ -18,10 +22,14 @@ sub respond {}
 
 sub queue {
 	my ($self,$method,@args) = @_;
+	croak "Plugin ".ref($self)." attempted to queue an undefined method call '$method'"
+		unless $self->can($method);
 }
 
 sub call {
 	my ($self,$method,@args) = @_;
+	croak "Plugin ".ref($self)." attempted to call undefined method '$method'"
+		unless $self->can($method);
 }
 
 sub log {
