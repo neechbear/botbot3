@@ -1,8 +1,10 @@
 #!/home/nicolaw/webroot/perl-5.8.7/bin/perl -w
+# vim:ts=4:sw=4:tw=78
 
 use 5.8.4;
 use strict;
 use warnings;
+no warnings qw(redefine);
 
 use FindBin qw($Bin);
 use lib ('./','./lib/',"$Bin","$Bin/plugin");
@@ -46,42 +48,57 @@ POE::Component::Client::TCP->new(
 		RemotePort    => $config->{port},
 		Filter => [ "POE::Filter::Line", Literal => "\x0D\x0A" ],
 
+		ConnectError => sub { TRACE("ConnectError"); },
 		Connected => sub {
 			TRACE("Connected");
 			print "Connected to $config->{host}:$config->{port}\n";
+			$_[HEAP]->{config} = $config;
 			$_[HEAP]->{logged_in} = 0;
 			$_[KERNEL]->delay(send_enter => 5);
 		},
 
-		ConnectError => sub {
-			TRACE("ConnectError");
-			print "Could not connect to $config->{host}:$config->{port}\n";
-		},
-
 		ServerInput => sub {
 			TRACE("ServerInput");
-			my ($kernel, $heap, $input) = @_[KERNEL, HEAP, ARG0];
+			my ($kernel, $heap, $session, $input) = @_[KERNEL, HEAP, SESSION, ARG0];
 
+			# Parse the raw event in to something more understandable
 			my $time = Time::HiRes::time();
 			my $args = parse_line($input);
 			$args->{time} = $time;
 
-			# here init tims
+			# Ask each plugin in turn if they want to handle this event
+			for my $plugin (load_plugins($kernel,$heap,$session->ID)) {
+				$plugin->handle($args);
+			}
 
-			$heap->{server}->put("$config->{username} $config->{password}\n") if $args->{msgtype} eq 'HELLO';
-			$heap->{server}->put(".observe public\n") if $args->{msgtype} eq 'COMMENT';
+# This is now in a plugin (or is about to be init)
+#			$heap->{server}->put("$config->{username} $config->{password}\n") if $args->{msgtype} eq 'HELLO';
+#			$heap->{server}->put(".observe public\n") if $args->{msgtype} eq 'COMMENT';
 
+			# These are little hacks because I didn't want to give plugins
+			# direct access to the POE kernel, so delayed login and connection
+			# response events are canned here instead for the time being
 			$kernel->delay(send_enter => undef) if $args->{msgtype} eq 'HELLO';
 			$kernel->delay(login_timeout => undef) if grep(/^DONE|COMMENT$/,($args->{msgtype}));
 		},
 
 		InlineStates =>  {
+			# Proxy a plugin event callback
+			plugin_callback => sub {
+				my ($self, $method, $args) = @_[ARG0,ARG1,ARG2];
+				$self->$method(@{$args});
+			},
+
+			# If there's not been any output after a connection, send an enter
+			# key to try and provoke the talker in to responding
 			send_enter => sub {
 				TRACE("InlineStates => send_enter");
 				$_[HEAP]->{server}->put("\n");
 				$_[KERNEL]->delay(login_timeout => 5);
 			},
 
+			# Not seen a sucessful login happen so we're going to close the
+			# session and connection
 			login_timeout => sub {
 				TRACE("InlineStates => login_timeout");
 				my ($kernel, $heap) = @_[KERNEL, HEAP];
@@ -94,6 +111,51 @@ $poe_kernel->run();
 
 exit 0;
 
+sub load_plugins {
+	my ($kernel,$heap,$session_id) = @_;
+
+	# If the heap already has a list of loaded module objects then just return
+	# that existing list - no need to instantiate them again
+	return @{$heap->{plugins}} if ref($heap->{plugins}) eq 'ARRAY';
+	$heap->{plugins} ||= [()];
+
+	eval {
+		# Instantiate each plugin, passing it some session information
+		for my $plugin ( __PACKAGE__->plugins(
+							# This private information will be used by the
+							# parent plugin superclass, but is not necessary
+							# to pass on to the dumb all plugins
+							_private => {
+									kernel => $kernel,
+									session_id => $session_id,
+								},
+							root => $dirname,
+							heap => $heap,
+							logfile => "$dirname/logs/$config->{username}.log",
+						) ) {
+
+			# Don't push this object in to the heap if it's marked as disabled
+			# in the configuration file (it'll be loaded in to memory but not
+			# listed in the heap, and so will not be asked to handle events)
+			my ($friendly) = ref($plugin) =~ m/^plugin(?:\/|\:\:)(\S+)(?:\.pm)?$/;
+			if (exists($config->{plugins}->{lc($friendly)}) &&
+					$config->{plugins}->{lc($friendly)} =~ /^disabled?$/i) {
+				next;
+			}
+
+			push @{$heap->{plugins}}, $plugin;
+		}
+
+		# Import Log::Trace symbols over the top of any new stubs found in the
+		# plugins that we just loaded
+		import Log::Trace 'warn' => { Deep => 1 };
+	};
+
+	TRACE("Loaded plugin ".ref($_)."\n") for sort(@{$heap->{plugins}});
+	# Return a list of loaded plugins that we just pushed in to the heap
+	return @{$heap->{plugins}};
+}
+
 sub read_config {
 	my $conf = new Config::General(
 			-ConfigFile => shift,
@@ -103,6 +165,11 @@ sub read_config {
 		);
 	return {$conf->getall};
 }
+
+sub TRACE {};
+sub TRACEF {};
+sub TRACE_HERE {};
+sub DUMP {};
 
 1;
 

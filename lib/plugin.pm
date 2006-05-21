@@ -1,35 +1,51 @@
 package plugin;
 
 use strict;
+use warnings;
+no warnings qw(redefine);
 
 use FileHandle;
 use POSIX qw(strftime);
 use UNIVERSAL;
 use Carp qw(carp croak);
 
+# Keep private things private, because there's no
+# good reason for people to meddle with them ;-)
+my %_private;
+
 sub new {
 	my $class = shift;
-	return bless({@_},$class);
+	my $self = { @_ };
+
+	# Barf if a plugin cannot "handle" an event
+	croak unless UNIVERSAL::can($class,'handle');
+
+	# Make private things private
+	%_private = %{$self->{_private}};
+	delete $self->{_private};
+
+	DUMP($class,$self);
+	return bless($self,$class);
 }
 
-sub handle {
-	my ($self,$event) = @_;
-	$self->log(sprintf('%s was called but has no handle() method', ref($self)));
-}
+sub whisper {
+	my $self = shift;
+	my $recipient = shift || '';
+	my $message = join(' ',@_);
 
-sub process {}
-sub respond {}
+	return unless $recipient =~ /\S+/ && $message =~ /\S+/;
+	my $send_str = sprintf(">%s %s", $recipient, $message);
+	TRACE('   >>Sending>>   $send_str');
+	$self->{heap}->{server}->put($send_str);
+}
 
 sub queue {
 	my ($self,$method,@args) = @_;
 	croak "Plugin ".ref($self)." attempted to queue an undefined method call '$method'"
 		unless $self->can($method);
-}
 
-sub call {
-	my ($self,$method,@args) = @_;
-	croak "Plugin ".ref($self)." attempted to call undefined method '$method'"
-		unless $self->can($method);
+	$_private{kernel}->post($_private{session_id}, 'plugin_callback',
+		$self, $method, \@args);
 }
 
 sub log {
@@ -43,6 +59,9 @@ sub log {
 		warn "Unable to open logfile $self->{logfile} for writing: $!";
 	}
 }
+
+sub TRACE {};
+sub DUMP {};
 
 1;
 

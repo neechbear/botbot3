@@ -7,12 +7,9 @@ our %CMDHELP = ();
 
 sub handle {
 	my ($self,$event) = @_;
-
-	return if $event->{alarm};
-	return unless $event->{command} =~ /wassup|yo|hi'?ya|hi|hello/i;
-	return unless $event->{msgtype} eq 'TELL';
-
-	$self->queue('respond',$event);
+	$self->queue('respond',$event) if
+			$event->{msgtype} eq 'TELL' &&
+			$event->{command} =~ /w+a+s+u+p+|yo|hi'?ya|h+i+|h+e+l+o+/i;
 }
 
 sub respond {
@@ -31,7 +28,7 @@ sub respond {
 			':)',
 		);
 
-	$self->{talker}->whisper(
+	$self->whisper(
 			$event->{list} ? $event->{list} : $event->{person},
 			$responses[int(rand(@responses))],
 		);
