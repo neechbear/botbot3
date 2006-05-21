@@ -6,7 +6,7 @@ use warnings;
 use subs qw(debug);
 
 use FindBin qw($Bin);
-use lib (".","$Bin","$Bin/plugin");
+use lib ('./','./lib/',"$Bin","$Bin/plugin");
 
 use constant DEBUG => $ENV{DEBUG} ? 1 : 0;
 
@@ -28,7 +28,7 @@ use Module::Pluggable(
 
 use vars qw($VERSION $SELF);
 ($SELF = $0) =~ s|^.*/||;
-$VERSION = sprintf('%d.%02d', q$Revision: 1.27 $ =~ /(\d+)/g);
+$VERSION = sprintf('%d.%02d', q$Revision$ =~ /(\d+)/g);
 
 sleep(4) if @ARGV && grep(/^(-p|--pause)$/i,@ARGV);
 init_server() if @ARGV && grep(/^(-d|--daemon)$/i,@ARGV);
