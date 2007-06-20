@@ -14,7 +14,6 @@ use POE::Component::Client::TCP;
 use POE::Filter::Line;
 use File::Basename qw(fileparse);
 use Config::General qw();
-use Time::HiRes;
 use Parse::Colloquy::Bot qw(:all);
 use Daemon;
 use plugin;
@@ -39,6 +38,7 @@ $VERSION = '3.01' || sprintf('%d', q$Revision$ =~ /(\d+)/g);
 sleep(4) if @ARGV && grep(/^(-p|--pause)$/i,@ARGV);
 init_server() if @ARGV && grep(/^(-d|--daemon)$/i,@ARGV);
 chdir($Bin) || die "Unable to change directory to $Bin: $!";
+$0 = $SELF;
 
 my ($basename, $dirname, $extension) = fileparse($0, '\.[^\.]+');
 for ("$basename.cfg") {
@@ -64,10 +64,8 @@ for ("$basename.cfg") {
 			TRACE("   <<Input" . $session->ID . "<<   $input");
 
 			# Parse the raw event in to something more understandable
-			my $time = Time::HiRes::time();
 			my $args = parse_line($input);
 			return unless ref($args) eq 'HASH';
-			$args->{time} = $time;
 
 			# Ask each plugin in turn if they want to handle this event
 			for my $plugin (load_plugins($kernel,$heap,$session->ID)) {
